@@ -1,4 +1,4 @@
-package com.sandoval.thalesemployee.domain.repository
+package com.sandoval.thalesemployee.domain.repository.employee_list
 
 import com.sandoval.thalesemployee.data.network.Failure
 import com.sandoval.thalesemployee.data.utils.Either
