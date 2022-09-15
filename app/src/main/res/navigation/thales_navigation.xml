@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/thales_navigation"
+    app:startDestination="@id/navigation_employee_list_fragment">
+
+    <fragment
+        android:id="@+id/navigation_employee_list_fragment"
+        android:name="com.sandoval.thalesemployee.ui.employee_list.fragments.EmployeeListFragment"
+        android:label="Fragment List Employee"
+        tools:layout="@layout/fragment_employee_list" >
+        <action
+            android:id="@+id/action_navigation_employee_list_fragment_to_employeeDetailFragment"
+            app:destination="@id/employeeDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/employeeDetailFragment"
+        android:name="com.sandoval.thalesemployee.ui.employee_detail.fragment.EmployeeDetailFragment"
+        android:label="fragment_employee_detail"
+        tools:layout="@layout/fragment_employee_detail" />
+
+</navigation>
