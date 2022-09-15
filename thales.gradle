@@ -37,6 +37,14 @@ versions.navigationVersion = "2.6.0-alpha01"
 versions.databindingCompilerVersion = "3.2.0-alpha10"
 versions.databindingCommonsVersion = "7.3.0"
 
+//Retrofit
+versions.retrofit2Version = "2.9.0"
+versions.retrofit2GsonConverterVersion = "2.9.0"
+
+//OkHttp3
+versions.okhttp3Version = "5.0.0-alpha.2"
+versions.okHttp3interceptorVersions = "5.0.0-alpha.2"
+
 //Library names
 
 //Root Gradle dependencies
@@ -91,6 +99,14 @@ def databinding = [:]
 databinding.dataBindingCompilerLibName = "com.android.databinding:compiler:$versions.databindingCompilerVersion"
 databinding.databindingCommomLibName = "androidx.databinding:databinding-common:$versions.databindingCommonsVersion"
 
+def retrofit = [:]
+retrofit.retrofit2LibName = "com.squareup.retrofit2:retrofit:$versions.retrofit2Version"
+retrofit.retrofit2GsonLibName = "com.squareup.retrofit2:converter-gson:$versions.retrofit2GsonConverterVersion"
+
+def okhttp3 = [:]
+okhttp3.okhttp3LibName = "com.squareup.okhttp3:okhttp:$versions.okhttp3Version"
+okhttp3.okhttp3LogingLibName = "com.squareup.okhttp3:logging-interceptor:$versions.okHttp3interceptorVersions"
+
 libs.compileSdk = compileSdk
 libs.minSdk = minSdk
 libs.targetSdk = targetSdk
@@ -104,6 +120,8 @@ libs.unitTest = unitTest
 libs.hilt = hilt
 libs.navigation = navigation
 libs.databinding = databinding
+libs.retrofit = retrofit
+libs.okhttp3 = okhttp3
 
 ext.libs = libs
 
