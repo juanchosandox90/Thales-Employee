@@ -70,4 +70,13 @@ dependencies {
     kapt libs.hilt.hiltGoogleCompilerLibName
     implementation libs.hilt.hiltLifecyleViewModelLibName
     kapt libs.hilt.hiltAndroidxCompiler
+
+    // Retrofit
+    implementation libs.retrofit.retrofit2LibName
+    implementation libs.retrofit.retrofit2GsonLibName
+
+    //OkHttp3
+    implementation libs.okhttp3.okhttp3LogingLibName
+    implementation libs.okhttp3.okhttp3LibName
+
 }
