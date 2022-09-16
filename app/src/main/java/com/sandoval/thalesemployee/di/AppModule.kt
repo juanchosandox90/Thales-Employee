@@ -4,6 +4,8 @@ import com.google.gson.GsonBuilder
 import com.sandoval.thalesemployee.BuildConfig
 import com.sandoval.thalesemployee.commons.BASE_URL
 import com.sandoval.thalesemployee.data.remote.api.ThalesEmployeeService
+import com.sandoval.thalesemployee.data.remote.repository.employee_list.RemoteDataGetEmployeeListRepository
+import com.sandoval.thalesemployee.domain.repository.employee_list.IGetEmployeeListRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -51,4 +53,10 @@ object AppModule {
     @Singleton
     fun provideApiService(retrofit: Retrofit): ThalesEmployeeService =
         retrofit.create(ThalesEmployeeService::class.java)
+
+    @Provides
+    @Singleton
+    fun providesGetEmployeeList(remoteDataGetEmployeeListRepository: RemoteDataGetEmployeeListRepository): IGetEmployeeListRepository =
+        remoteDataGetEmployeeListRepository
+
 }
