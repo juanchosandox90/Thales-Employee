@@ -35,11 +35,11 @@ class GetEmployeeListUseCaseTest : UnitTest() {
                     Either.Right(
                         listOf(
                             DData(
-                                employeeAge = 61,
-                                employeeName = "Tiger Nixon",
-                                employeeSalary = 320800,
+                                employee_age = 61,
+                                employee_name = "Tiger Nixon",
+                                employee_salary = 320800,
                                 id = 1,
-                                profileImage = ""
+                                profile_image = ""
                             )
                         )
                     )

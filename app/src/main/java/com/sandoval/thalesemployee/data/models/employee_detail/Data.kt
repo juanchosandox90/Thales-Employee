@@ -3,17 +3,17 @@ package com.sandoval.thalesemployee.data.models.employee_detail
 import com.sandoval.thalesemployee.domain.models.employee_detail.DData
 
 data class Data(
-    val employeeAge: Int?,
-    val employeeName: String?,
-    val employeeSalary: Int?,
+    val employee_age: Int?,
+    val employee_name: String?,
+    val employee_salary: Int?,
     val id: Int?,
-    val profileImage: String?
+    val profile_image: String?
 ) {
     fun toDomainObject() = DData(
-        employeeAge = employeeAge ?: 0,
-        employeeName = employeeName ?: "",
-        employeeSalary = employeeSalary ?: 0,
+        employee_age = employee_age ?: 0,
+        employee_name = employee_name ?: "",
+        employee_salary = employee_salary ?: 0,
         id = id ?: 0,
-        profileImage = profileImage ?: ""
+        profile_image = profile_image ?: ""
     )
 }

@@ -5,9 +5,9 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class DDataDetailPresentation(
-    val employeeAge: Int?,
-    val employeeName: String?,
-    val employeeSalary: Int?,
+    val employee_age: Int?,
+    val employee_name: String?,
+    val employee_salary: Int?,
     val id: Int?,
-    val profileImage: String?
+    val profile_image: String?
 ) : Parcelable

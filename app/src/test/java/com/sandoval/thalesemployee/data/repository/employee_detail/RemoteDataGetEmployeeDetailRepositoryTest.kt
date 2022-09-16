@@ -55,11 +55,11 @@ class RemoteDataGetEmployeeDetailRepositoryTest : UnitTest() {
         runBlockingTest {
             getEmployeeDetailResponse = EmployeeDetailResponse(
                 data = Data(
-                    employeeAge = 32,
-                    employeeName = "Tiger Nixon",
-                    employeeSalary = 32000,
+                    employee_age = 61,
+                    employee_name = "Tiger Nixon",
+                    employee_salary = 320800,
                     id = 1,
-                    profileImage = ""
+                    profile_image = ""
                 ),
                 message = "Successfully! Record has been fetched.",
                 status = "success"

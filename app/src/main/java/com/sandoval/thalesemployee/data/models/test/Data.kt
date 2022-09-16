@@ -1,6 +1,6 @@
-package com.sandoval.thalesemployee.domain.models.employee_list
+package com.sandoval.thalesemployee.data.models.test
 
-data class DData(
+data class Data(
     val employee_age: Int?,
     val employee_name: String?,
     val employee_salary: Int?,
