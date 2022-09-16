@@ -1,43 +1,20 @@
 package com.sandoval.thalesemployee.ui.employee_list.fragments
 
-import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.sandoval.thalesemployee.databinding.FragmentEmployeeListBinding
+import com.sandoval.thalesemployee.ui.base.BaseFragment
 import com.sandoval.thalesemployee.ui.employee_list.viewmodel.GetEmployeeListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class EmployeeListFragment : Fragment() {
-
-    private var _fragmentEmployeeListBinding: FragmentEmployeeListBinding? = null
-    private val fragmentEmployeeListBinding get() = _fragmentEmployeeListBinding!!
+class EmployeeListFragment : BaseFragment<FragmentEmployeeListBinding>(
+    FragmentEmployeeListBinding::inflate
+) {
     private val getEmployeeListViewModel: GetEmployeeListViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _fragmentEmployeeListBinding =
-            FragmentEmployeeListBinding.inflate(inflater, container, false)
-
-        fragmentEmployeeListBinding.goToDetail.setOnClickListener {
-            val action =
-                EmployeeListFragmentDirections.actionNavigationEmployeeListFragmentToEmployeeDetailFragment()
-            findNavController().navigate(action)
-        }
-
-        initViewModels()
-
-        return fragmentEmployeeListBinding.root
-    }
-
-    private fun initViewModels() {
+    override fun initViewModels() {
         getEmployeeListViewModel.employeeListModel.observe(viewLifecycleOwner) {
             when {
                 it.loading -> {
@@ -53,6 +30,14 @@ class EmployeeListFragment : Fragment() {
                     Log.e("Error", it.errorMessage.toString())
                 }
             }
+        }
+    }
+
+    override fun initViews() {
+        binding.goToDetail.setOnClickListener {
+            val action =
+                EmployeeListFragmentDirections.actionNavigationEmployeeListFragmentToEmployeeDetailFragment()
+            findNavController().navigate(action)
         }
     }
 
