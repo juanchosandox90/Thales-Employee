@@ -45,6 +45,18 @@ versions.retrofit2GsonConverterVersion = "2.9.0"
 versions.okhttp3Version = "5.0.0-alpha.2"
 versions.okHttp3interceptorVersions = "5.0.0-alpha.2"
 
+/*
+Tests Versions of Tests Libraries
+Android Arch
+MockK
+CoroutinesTest
+Truth of Google
+ */
+versions.androidArchTestVersion = "2.1.0"
+versions.mockkVersion = "1.12.3"
+versions.coroutinesTestVersion = "1.6.4"
+versions.truthTestVersion = "1.1.2"
+
 //Library names
 
 //Root Gradle dependencies
@@ -107,6 +119,22 @@ def okhttp3 = [:]
 okhttp3.okhttp3LibName = "com.squareup.okhttp3:okhttp:$versions.okhttp3Version"
 okhttp3.okhttp3LogingLibName = "com.squareup.okhttp3:logging-interceptor:$versions.okHttp3interceptorVersions"
 
+/*
+Test Libraries for Unit tests
+ */
+
+def androidCoreArchTest = [:]
+androidCoreArchTest.androidCoreArchTestLibName = "androidx.arch.core:core-testing:$versions.androidArchTestVersion"
+
+def mockk = [:]
+mockk.mockkLibName = "io.mockk:mockk:$versions.mockkVersion"
+
+def coroutinesTest = [:]
+coroutinesTest.coroutinesTestLibName = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$versions.coroutinesTestVersion"
+
+def truth = [:]
+truth.truthLibName = "com.google.truth:truth:$versions.truthTestVersion"
+
 libs.compileSdk = compileSdk
 libs.minSdk = minSdk
 libs.targetSdk = targetSdk
@@ -122,6 +150,10 @@ libs.navigation = navigation
 libs.databinding = databinding
 libs.retrofit = retrofit
 libs.okhttp3 = okhttp3
+libs.androidCoreArchTest = androidCoreArchTest
+libs.mockk = mockk
+libs.coroutinesTest = coroutinesTest
+libs.truth = truth
 
 ext.libs = libs
 

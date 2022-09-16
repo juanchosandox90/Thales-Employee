@@ -39,6 +39,9 @@ android {
 
     kotlinOptions {
         jvmTarget = '11'
+        freeCompilerArgs += [
+                "-Xopt-in=kotlin.RequiresOptIn"
+        ]
     }
 }
 
@@ -56,6 +59,13 @@ dependencies {
     testImplementation libs.unitTest.JUnitLibName
     androidTestImplementation libs.unitTest.androidXJUnitLibName
     androidTestImplementation libs.unitTest.androidXEspressoCoreLibName
+    testImplementation libs.androidCoreArchTest.androidCoreArchTestLibName
+    //Mock
+    testImplementation libs.mockk.mockkLibName
+    //Coroutines Tests
+    implementation libs.coroutinesTest.coroutinesTestLibName
+    //Truth from Google
+    implementation libs.truth.truthLibName
 
     //Navigation Components
     implementation libs.navigation.navigationKtxFragmentLibName
