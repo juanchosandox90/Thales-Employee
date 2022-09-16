@@ -40,7 +40,7 @@ android {
     kotlinOptions {
         jvmTarget = '11'
         freeCompilerArgs += [
-                "-Xopt-in=kotlin.RequiresOptIn"
+                "-opt-in=kotlin.RequiresOptIn"
         ]
     }
 }
@@ -78,7 +78,7 @@ dependencies {
     // Dagger - Hilt
     implementation libs.hilt.hiltLibName
     kapt libs.hilt.hiltGoogleCompilerLibName
-    implementation libs.hilt.hiltLifecyleViewModelLibName
+    //implementation libs.hilt.hiltLifecyleViewModelLibName
     kapt libs.hilt.hiltAndroidxCompiler
 
     // Retrofit

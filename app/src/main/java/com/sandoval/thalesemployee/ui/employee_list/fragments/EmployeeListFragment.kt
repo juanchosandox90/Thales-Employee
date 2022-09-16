@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.sandoval.thalesemployee.databinding.FragmentEmployeeListBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class EmployeeListFragment : Fragment() {
 
     private var _fragmentEmployeeListBinding: FragmentEmployeeListBinding? = null
