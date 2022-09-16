@@ -100,7 +100,7 @@ unitTest.androidXEspressoCoreLibName = "androidx.test.espresso:espresso-core:$ve
 def hilt = [:]
 hilt.hiltLibName = "com.google.dagger:hilt-android:$versions.hiltVersion"
 hilt.hiltGoogleCompilerLibName = "com.google.dagger:hilt-android-compiler:$versions.hiltVersion"
-hilt.hiltLifecyleViewModelLibName = "androidx.hilt:hilt-lifecycle-viewmodel:$versions.hiltLifecycleViewmodelVersion"
+//hilt.hiltLifecyleViewModelLibName = "androidx.hilt:hilt-lifecycle-viewmodel:$versions.hiltLifecycleViewmodelVersion"
 hilt.hiltAndroidxCompiler = "androidx.hilt:hilt-compiler:$versions.hiltAndroixVersion"
 
 def navigation = [:]

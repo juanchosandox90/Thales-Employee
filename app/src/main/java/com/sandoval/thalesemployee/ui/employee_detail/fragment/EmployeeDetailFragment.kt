@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.sandoval.thalesemployee.databinding.FragmentEmployeeDetailBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class EmployeeDetailFragment : Fragment() {
 
     private var _fragmentEmployeeDetailBinding: FragmentEmployeeDetailBinding? = null
