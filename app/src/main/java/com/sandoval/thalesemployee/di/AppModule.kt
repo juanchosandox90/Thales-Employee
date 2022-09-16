@@ -4,7 +4,9 @@ import com.google.gson.GsonBuilder
 import com.sandoval.thalesemployee.BuildConfig
 import com.sandoval.thalesemployee.commons.BASE_URL
 import com.sandoval.thalesemployee.data.remote.api.ThalesEmployeeService
+import com.sandoval.thalesemployee.data.remote.repository.employee_detail.RemoteDataGetEmployeeDetailRepository
 import com.sandoval.thalesemployee.data.remote.repository.employee_list.RemoteDataGetEmployeeListRepository
+import com.sandoval.thalesemployee.domain.repository.employee_detail.IGetEmployeeDetailRepository
 import com.sandoval.thalesemployee.domain.repository.employee_list.IGetEmployeeListRepository
 import dagger.Module
 import dagger.Provides
@@ -58,5 +60,10 @@ object AppModule {
     @Singleton
     fun providesGetEmployeeList(remoteDataGetEmployeeListRepository: RemoteDataGetEmployeeListRepository): IGetEmployeeListRepository =
         remoteDataGetEmployeeListRepository
+
+    @Provides
+    @Singleton
+    fun providesGetEmployeeDetail(remoteDataGetEmployeeDetailRepository: RemoteDataGetEmployeeDetailRepository): IGetEmployeeDetailRepository =
+        remoteDataGetEmployeeDetailRepository
 
 }

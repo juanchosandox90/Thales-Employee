@@ -38,7 +38,7 @@ class GetEmployeeListViewModelTest : UnitTest() {
     }
 
     @Test
-    fun `getData should return actual list`() {
+    fun `getData should return actual employee list`() {
         every { getEmployeeListUseCase(any(), Unit, any()) }.answers {
             lastArg<(Either<Failure, List<DData>>) -> Unit>()(Either.Right(data))
         }
