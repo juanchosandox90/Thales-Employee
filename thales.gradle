@@ -46,7 +46,7 @@ versions.okhttp3Version = "5.0.0-alpha.2"
 versions.okHttp3interceptorVersions = "5.0.0-alpha.2"
 
 //Lottie Animations
-versions.lottieVersion = "3.7.0"
+versions.lottieVersion = "5.2.0"
 
 /*
 Tests Versions of Tests Libraries
