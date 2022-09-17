@@ -2,6 +2,7 @@ package com.sandoval.thalesemployee.ui.employee_list.fragments
 
 import android.content.Context
 import android.os.Parcelable
+import android.text.InputType
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -13,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sandoval.thalesemployee.R
 import com.sandoval.thalesemployee.databinding.FragmentEmployeeListBinding
 import com.sandoval.thalesemployee.ui.base.BaseFragment
+import com.sandoval.thalesemployee.ui.employee_detail.models.DDataDetailPresentation
+import com.sandoval.thalesemployee.ui.employee_detail.viewmodel.GetEmployeeDetailViewModel
 import com.sandoval.thalesemployee.ui.employee_list.adapter.EmployeeListAdapter
 import com.sandoval.thalesemployee.ui.employee_list.viewmodel.GetEmployeeListViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,12 +27,16 @@ class EmployeeListFragment : BaseFragment<FragmentEmployeeListBinding>(
 
     private var recyclerViewState: Parcelable? = null
     private val getEmployeeListViewModel: GetEmployeeListViewModel by viewModels()
+    private val getEmployeeDetailViewModel: GetEmployeeDetailViewModel by viewModels()
+
+    private var employeeId: Int? = null
 
     private val adapter: EmployeeListAdapter by lazy {
         EmployeeListAdapter()
     }
 
     override fun initViewModels() {
+
         getEmployeeListViewModel.employeeListModel.observe(viewLifecycleOwner) {
             when {
                 it.loading -> {
@@ -40,10 +47,30 @@ class EmployeeListFragment : BaseFragment<FragmentEmployeeListBinding>(
                 }
                 it.data != null -> {
                     binding.employeesListRecycler.visibility = View.VISIBLE
+                    binding.generalError.generalIssues.visibility = View.GONE
                     hideLoading()
                 }
                 it.errorMessage != null -> {
                     setupGeneralErrorView()
+                    hideLoading()
+                }
+            }
+        }
+
+        getEmployeeDetailViewModel.getEmployeeDetailViewModel.observe(viewLifecycleOwner) {
+            when {
+                it.loading -> {
+                    showLoading()
+                }
+                it.isEmpty -> {
+                    hideLoading()
+                }
+                it.dataDetail != null -> {
+                    binding.generalError.generalIssues.visibility = View.GONE
+                    setupDetailEmployeeView(it.dataDetail)
+                    hideLoading()
+                }
+                it.errorMessage != null -> {
                     hideLoading()
                 }
             }
@@ -77,6 +104,17 @@ class EmployeeListFragment : BaseFragment<FragmentEmployeeListBinding>(
         binding.employeesListRecycler.adapter = adapter
     }
 
+    private fun setupDetailEmployeeView(dataDetail: DDataDetailPresentation) {
+        val salaryInt = dataDetail.employee_salary
+        val salaryAnnual = salaryInt?.times(12)
+        binding.generalError.generalIssues.visibility = View.GONE
+        binding.employeesListRecycler.visibility = View.GONE
+        binding.employeeDetailContainer.visibility = View.VISIBLE
+        binding.employeeDetailName.setText("Name: ${dataDetail.employee_name}")
+        binding.employeeDetailSalary.setText("Annual Salary: ${salaryAnnual.toString()}")
+        binding.employeeDetailAge.setText("Employee Age: ${dataDetail.employee_age.toString()}")
+    }
+
     private fun initSearchViewOption(menu: Menu) {
         val search = menu.findItem(R.id.searchConversationMenu)
         val searchView = search.actionView as? SearchView
@@ -84,14 +122,17 @@ class EmployeeListFragment : BaseFragment<FragmentEmployeeListBinding>(
         searchView?.isIconified = true
         searchView?.setIconifiedByDefault(true)
         searchView?.setOnQueryTextListener(this)
+        searchView?.inputType = InputType.TYPE_CLASS_NUMBER
 
         val searchViewsCloseBtn =
             searchView!!.findViewById<View>(com.google.android.material.R.id.search_close_btn)
         searchViewsCloseBtn.setOnClickListener {
             if (searchView.query.isNotEmpty()) {
+                binding.employeeDetailContainer.visibility = View.GONE
                 searchView.setQuery("", false)
                 searchView.onActionViewCollapsed()
                 search.collapseActionView()
+                getEmployeeListViewModel.getData()
             }
         }
 
@@ -103,7 +144,8 @@ class EmployeeListFragment : BaseFragment<FragmentEmployeeListBinding>(
             }
 
             override fun onMenuItemActionCollapse(p0: MenuItem): Boolean {
-                binding.employeesListRecycler.visibility = View.VISIBLE
+                binding.employeeDetailContainer.visibility = View.GONE
+                getEmployeeListViewModel.getData()
                 hideKeyBoard()
                 return true
             }
@@ -125,6 +167,9 @@ class EmployeeListFragment : BaseFragment<FragmentEmployeeListBinding>(
 
     override fun onQueryTextSubmit(query: String?): Boolean {
         if (query != null) {
+            binding.employeesListRecycler.visibility = View.GONE
+            employeeId = query.toInt()
+            getEmployeeDetailViewModel.getDataDetail(employeeId!!)
             hideKeyBoard()
         }
         return true

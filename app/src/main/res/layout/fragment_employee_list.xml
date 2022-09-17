@@ -27,6 +27,98 @@
             tools:itemCount="10"
             tools:listitem="@layout/item_employee_list" />
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/employee_detail_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/employee_card_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:elevation="8dp"
+                android:outlineAmbientShadowColor="@android:color/darker_gray"
+                android:outlineSpotShadowColor="@android:color/darker_gray"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:targetApi="p">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/employee_detail_picture"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:contentDescription="employee avatar image"
+                        android:src="@drawable/ic_avatar_employee_placeholder"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/employee_detail_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toTopOf="@+id/employee_detail_salary"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/employee_detail_picture"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Name: Tiger Nixon" />
+
+                    <TextView
+                        android:id="@+id/employee_detail_salary"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toTopOf="@+id/employee_detail_age"
+                        app:layout_constraintStart_toEndOf="@+id/employee_detail_picture"
+                        app:layout_constraintTop_toBottomOf="@+id/employee_detail_name"
+                        tools:text="Salary: $USD 320000" />
+
+                    <TextView
+                        android:id="@+id/employee_detail_age"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/employee_detail_picture"
+                        app:layout_constraintTop_toBottomOf="@+id/employee_detail_salary"
+                        tools:text="Employee Age: 32" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <include
             android:id="@+id/loading"
             layout="@layout/loading_thales_employee"
