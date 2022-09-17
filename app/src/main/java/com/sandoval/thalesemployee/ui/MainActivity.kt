@@ -3,7 +3,9 @@ package com.sandoval.thalesemployee.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.sandoval.thalesemployee.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private var _mainActivityBinding: ActivityMainBinding? = null

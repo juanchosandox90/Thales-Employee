@@ -65,11 +65,11 @@ class RemoteDataGetEmployeeListRepositoryTest : UnitTest() {
             employeeListResponse = EmployeeListResponse(
                 data = listOf(
                     Data(
-                        employeeAge = 61,
-                        employeeName = "Tiger Nixon",
-                        employeeSalary = 320800,
+                        employee_age = 61,
+                        employee_name = "Tiger Nixon",
+                        employee_salary = 320800,
                         id = 1,
-                        profileImage = ""
+                        profile_image = ""
                     )
                 ),
                 message = "Successfully! All records has been fetched.",

@@ -1,22 +1,50 @@
 package com.sandoval.thalesemployee.ui.employee_detail.fragment
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.sandoval.thalesemployee.databinding.FragmentEmployeeDetailBinding
+import com.sandoval.thalesemployee.ui.base.BaseFragment
+import com.sandoval.thalesemployee.ui.employee_detail.viewmodel.GetEmployeeDetailViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-class EmployeeDetailFragment : Fragment() {
+@AndroidEntryPoint
+class EmployeeDetailFragment : BaseFragment<FragmentEmployeeDetailBinding>(
+    FragmentEmployeeDetailBinding::inflate
+) {
+    private val getEmployeeDetailViewModel: GetEmployeeDetailViewModel by viewModels()
 
-    private var _fragmentEmployeeDetailBinding: FragmentEmployeeDetailBinding? = null
-    private val fragmentEmployeeDetailBinding get() = _fragmentEmployeeDetailBinding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _fragmentEmployeeDetailBinding = FragmentEmployeeDetailBinding.inflate(inflater, container, false)
-        return fragmentEmployeeDetailBinding.root
+    override fun initViewModels() {
+        getEmployeeDetailViewModel.getDataDetail(1)
+        getEmployeeDetailViewModel.getEmployeeDetailViewModel.observe(viewLifecycleOwner) {
+            when {
+                it.loading -> {
+                  //  showLoading()
+                }
+                it.isEmpty -> {
+                   // hideLoading()
+                }
+                it.dataDetail != null -> {
+                  //  hideLoading()
+                }
+                it.errorMessage != null -> {
+                 //   hideLoading()
+                }
+            }
+        }
     }
+
+    override fun initViews() {
+
+    }
+
+/*
+    private fun showLoading() {
+        binding.loading.loadingContainer.visibility = View.VISIBLE
+    }
+
+    private fun hideLoading() {
+        binding.loading.loadingContainer.visibility = View.GONE
+    }
+*/
+
 }
+

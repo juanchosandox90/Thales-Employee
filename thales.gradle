@@ -45,6 +45,9 @@ versions.retrofit2GsonConverterVersion = "2.9.0"
 versions.okhttp3Version = "5.0.0-alpha.2"
 versions.okHttp3interceptorVersions = "5.0.0-alpha.2"
 
+//Lottie Animations
+versions.lottieVersion = "5.2.0"
+
 /*
 Tests Versions of Tests Libraries
 Android Arch
@@ -100,7 +103,7 @@ unitTest.androidXEspressoCoreLibName = "androidx.test.espresso:espresso-core:$ve
 def hilt = [:]
 hilt.hiltLibName = "com.google.dagger:hilt-android:$versions.hiltVersion"
 hilt.hiltGoogleCompilerLibName = "com.google.dagger:hilt-android-compiler:$versions.hiltVersion"
-hilt.hiltLifecyleViewModelLibName = "androidx.hilt:hilt-lifecycle-viewmodel:$versions.hiltLifecycleViewmodelVersion"
+//hilt.hiltLifecyleViewModelLibName = "androidx.hilt:hilt-lifecycle-viewmodel:$versions.hiltLifecycleViewmodelVersion"
 hilt.hiltAndroidxCompiler = "androidx.hilt:hilt-compiler:$versions.hiltAndroixVersion"
 
 def navigation = [:]
@@ -118,6 +121,9 @@ retrofit.retrofit2GsonLibName = "com.squareup.retrofit2:converter-gson:$versions
 def okhttp3 = [:]
 okhttp3.okhttp3LibName = "com.squareup.okhttp3:okhttp:$versions.okhttp3Version"
 okhttp3.okhttp3LogingLibName = "com.squareup.okhttp3:logging-interceptor:$versions.okHttp3interceptorVersions"
+
+def lottie = [:]
+lottie.lottieLibName = "com.airbnb.android:lottie:$versions.lottieVersion"
 
 /*
 Test Libraries for Unit tests
@@ -150,6 +156,7 @@ libs.navigation = navigation
 libs.databinding = databinding
 libs.retrofit = retrofit
 libs.okhttp3 = okhttp3
+libs.lottie = lottie
 libs.androidCoreArchTest = androidCoreArchTest
 libs.mockk = mockk
 libs.coroutinesTest = coroutinesTest
