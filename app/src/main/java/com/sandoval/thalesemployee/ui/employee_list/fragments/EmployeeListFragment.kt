@@ -144,6 +144,7 @@ class EmployeeListFragment : BaseFragment<FragmentEmployeeListBinding>(
             }
 
             override fun onMenuItemActionCollapse(p0: MenuItem): Boolean {
+                binding.employeeDetailContainer.visibility = View.GONE
                 getEmployeeListViewModel.getData()
                 hideKeyBoard()
                 return true
