@@ -64,6 +64,10 @@ Thales Employee project is using github actions, to be able to take advantages o
 
 <img alt="Screen Shot 2022-09-11 at 8 26 58 PM" src="github_actions.png">
 
+## TROUBLESHOOTING ⚠️
+
+- Based on the [API documentation](https://dummy.restapiexample.com/) provided, looks like the server is really unestable, keeps failing due to many request at the same time. So in the app you will have to keep trying until it responds.
+
 ## Contributions
 
 All contributions are welcome!
