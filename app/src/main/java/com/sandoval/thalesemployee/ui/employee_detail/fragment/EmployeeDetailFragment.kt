@@ -1,6 +1,6 @@
 package com.sandoval.thalesemployee.ui.employee_detail.fragment
 
-import android.util.Log
+import android.view.View
 import androidx.fragment.app.viewModels
 import com.sandoval.thalesemployee.databinding.FragmentEmployeeDetailBinding
 import com.sandoval.thalesemployee.ui.base.BaseFragment
@@ -18,16 +18,16 @@ class EmployeeDetailFragment : BaseFragment<FragmentEmployeeDetailBinding>(
         getEmployeeDetailViewModel.getEmployeeDetailViewModel.observe(viewLifecycleOwner) {
             when {
                 it.loading -> {
-                    Log.d("Loading", "Loading...")
+                    showLoading()
                 }
                 it.isEmpty -> {
-                    Log.d("Data Detail", "Empty...")
+                    hideLoading()
                 }
                 it.dataDetail != null -> {
-                    Log.d("Data Detail", it.dataDetail.toString())
+                    hideLoading()
                 }
                 it.errorMessage != null -> {
-                    Log.e("Error", it.errorMessage.toString())
+                    hideLoading()
                 }
             }
         }
@@ -35,6 +35,14 @@ class EmployeeDetailFragment : BaseFragment<FragmentEmployeeDetailBinding>(
 
     override fun initViews() {
 
+    }
+
+    private fun showLoading() {
+        binding.loading.loadingContainer.visibility = View.VISIBLE
+    }
+
+    private fun hideLoading() {
+        binding.loading.loadingContainer.visibility = View.GONE
     }
 
 }
