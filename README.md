@@ -36,7 +36,7 @@ IMAGE HERE
 
 The architecture of the application is based, apply and strictly complies with each of the following 5 points:
 
-<img src="arch diagram.png" width="300" align="right" hspace="20">
+<img src="packages.png" width="300" align="right" hspace="20">
 
 -   A single-activity architecture, using the [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started) to manage fragment operations.
 -   [Android architecture components](https://developer.android.com/topic/libraries/architecture/), part of Android Jetpack for give to project a robust design, testable and maintainable.
