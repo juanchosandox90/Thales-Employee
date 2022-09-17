@@ -1,6 +1,6 @@
 package com.sandoval.thalesemployee.ui.employee_list.fragments
 
-import android.util.Log
+import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.sandoval.thalesemployee.databinding.FragmentEmployeeListBinding
@@ -18,16 +18,16 @@ class EmployeeListFragment : BaseFragment<FragmentEmployeeListBinding>(
         getEmployeeListViewModel.employeeListModel.observe(viewLifecycleOwner) {
             when {
                 it.loading -> {
-                    Log.d("Loading", "Loading...")
+                    showLoading()
                 }
                 it.isEmpty -> {
-                    Log.d("Data", "Empty...")
+                    hideLoading()
                 }
                 it.data != null -> {
-                    Log.d("Data", it.data.toString())
+                    hideLoading()
                 }
                 it.errorMessage != null -> {
-                    Log.e("Error", it.errorMessage.toString())
+                    hideLoading()
                 }
             }
         }
@@ -39,6 +39,14 @@ class EmployeeListFragment : BaseFragment<FragmentEmployeeListBinding>(
                 EmployeeListFragmentDirections.actionNavigationEmployeeListFragmentToEmployeeDetailFragment()
             findNavController().navigate(action)
         }
+    }
+
+    private fun showLoading() {
+        binding.loading.loadingContainer.visibility = View.VISIBLE
+    }
+
+    private fun hideLoading() {
+        binding.loading.loadingContainer.visibility = View.GONE
     }
 
 }
