@@ -50,4 +50,43 @@ class GetEmployeeListViewModelTest : UnitTest() {
         Truth.assertThat(res.data).isEqualTo(data.map { it.toPresentation() })
     }
 
+    @Test
+    fun `getData should show empty view when no results are found`() {
+        every { getEmployeeListUseCase(any(), Unit, any()) }.answers {
+            lastArg<(Either<Failure, List<DData>>) -> Unit>()(Either.Right(emptyList()))
+        }
+        getEmployeeListViewModel.getData()
+        val res = getEmployeeListViewModel.employeeListModel.getOrAwaitValueTest()
+        Truth.assertThat(res.errorMessage).isNull()
+        Truth.assertThat(res.loading).isFalse()
+        Truth.assertThat(res.isEmpty).isTrue()
+        Truth.assertThat(res.data).isNull()
+    }
+
+    @Test
+    fun `getData should show error view when error occurs`() {
+        every { getEmployeeListUseCase(any(), Unit, any()) }.answers {
+            lastArg<(Either<Failure, List<DData>>) -> Unit>()(Either.Left(Failure.ServerError))
+        }
+        getEmployeeListViewModel.getData()
+        val res = getEmployeeListViewModel.employeeListModel.getOrAwaitValueTest()
+        Truth.assertThat(res.errorMessage).isNotNull()
+        Truth.assertThat(res.loading).isFalse()
+        Truth.assertThat(res.isEmpty).isFalse()
+        Truth.assertThat(res.data).isNull()
+    }
+
+    @Test
+    fun `getData should show error connection view when a error network connection occurs`() {
+        every { getEmployeeListUseCase(any(), Unit, any()) }.answers {
+            lastArg<(Either<Failure, List<DData>>) -> Unit>()(Either.Left(Failure.NetworkConnection))
+        }
+        getEmployeeListViewModel.getData()
+        val res = getEmployeeListViewModel.employeeListModel.getOrAwaitValueTest()
+        Truth.assertThat(res.errorMessage).isNotNull()
+        Truth.assertThat(res.loading).isFalse()
+        Truth.assertThat(res.isEmpty).isFalse()
+        Truth.assertThat(res.data).isNull()
+    }
+
 }

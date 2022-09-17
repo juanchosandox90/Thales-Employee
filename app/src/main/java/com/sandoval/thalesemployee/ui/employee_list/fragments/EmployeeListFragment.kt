@@ -189,6 +189,16 @@ class EmployeeListFragment : BaseFragment<FragmentEmployeeListBinding>(
         }
     }
 
+    override fun showNoInternetConnection() {
+        binding.employeesListRecycler.visibility = View.GONE
+        binding.generalError.generalIssues.visibility = View.VISIBLE
+        binding.generalError.reload.setOnClickListener {
+            getEmployeeListViewModel.getData()
+            binding.generalError.generalIssues.visibility = View.GONE
+            showLoading()
+        }
+    }
+
     private fun showLoading() {
         binding.loading.loadingContainer.visibility = View.VISIBLE
     }

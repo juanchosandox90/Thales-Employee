@@ -49,4 +49,31 @@ class GetEmployeeDetailViewModelTest : UnitTest() {
         Truth.assertThat(res.isEmpty).isFalse()
         Truth.assertThat(res.dataDetail).isEqualTo(dataDetail.toPresentation())
     }
+
+
+    @Test
+    fun `getDataDetail should show error view when error occurs`() {
+        every { getEmployeeDetailUseCase(any(), 1, any()) }.answers {
+            lastArg<(Either<Failure, DData>) -> Unit>()(Either.Left(Failure.ServerError))
+        }
+        getEmployeeDetailViewModel.getDataDetail(1)
+        val res = getEmployeeDetailViewModel.getEmployeeDetailViewModel.getOrAwaitValueTest()
+        Truth.assertThat(res.errorMessage).isNotNull()
+        Truth.assertThat(res.loading).isFalse()
+        Truth.assertThat(res.isEmpty).isFalse()
+        Truth.assertThat(res.dataDetail).isNull()
+    }
+
+    @Test
+    fun `getDataDetail should show error connection view when a error network connection occurs`() {
+        every { getEmployeeDetailUseCase(any(), 1, any()) }.answers {
+            lastArg<(Either<Failure, DData>) -> Unit>()(Either.Left(Failure.NetworkConnection))
+        }
+        getEmployeeDetailViewModel.getDataDetail(1)
+        val res = getEmployeeDetailViewModel.getEmployeeDetailViewModel.getOrAwaitValueTest()
+        Truth.assertThat(res.errorMessage).isNotNull()
+        Truth.assertThat(res.loading).isFalse()
+        Truth.assertThat(res.isEmpty).isFalse()
+        Truth.assertThat(res.dataDetail).isNull()
+    }
 }
