@@ -5,7 +5,7 @@
 Thales Employee project will be built using the principles of Clean Architecture - S.O.L.I.D as one single project (not modular) using the MVVM pattern. 
 The general idea is to have the app divided like this
 
-IMAGE HERE
+<img alt="Screen Shot 2022-09-11 at 8 26 58 PM" src="arch_diagram.png">
 
 ## Architecture and Pattern Description
 
@@ -23,6 +23,8 @@ The project, as is using clean architecture will be divided in:
 - The project is even easier to maintain.
 - Our team can add new features even more quickly.
 
+<img alt="Screen Shot 2022-09-11 at 8 26 58 PM" src="solid.png">
+
 ## Unit Test
 
 Thales Employee project, has unit-test that covers the complete pattern and architecture of the project
@@ -30,7 +32,7 @@ Thales Employee project, has unit-test that covers the complete pattern and arch
 - Domain (Unit tests for the Use Cases)
 - UI (Unit tests for the ViewModels)
 
-IMAGE HERE
+<img alt="Screen Shot 2022-09-11 at 8 26 58 PM" src="unittests.png">
 
 ### Thales Project Packages Distribution
 
@@ -44,8 +46,6 @@ The architecture of the application is based, apply and strictly complies with e
 -   [S.O.L.I.D](https://en.wikipedia.org/wiki/SOLID) design principles intended to make software designs more understandable, flexible and maintainable.
 -   [Packages architecture](https://proandroiddev.com/build-a-modular-android-app-architecture-25342d99de82) allows to be developed features in isolation, independently from other features.
 
-
-IMAGE HERE
 
 ### Version Control
 
@@ -61,5 +61,39 @@ Thales Employee project is using github actions, to be able to take advantages o
 - Using ANDROID CI the repository builds the project automatically every time a new PR is created and pointed to dev branch. 
 - Using ANDROID CI the repository builds the unit tests that are in the project and evaluate if a build has been succesfully created or not depending on the result of the test passed
 
-IMAGE HERE
+
+<img alt="Screen Shot 2022-09-11 at 8 26 58 PM" src="github_actions.png">
+
+## Contributions
+
+All contributions are welcome!
+Please feel free to post questions, recommendations, ideas, bugs by create [new issue](https://github.com/juanchosandox90/BestToDoApp/issues) following the template or if you want create directly [new pull request](https://github.com/juanchosandox90/BestToDoApp/pulls).
+
+## Authors
+
+<a href="https://www.facebook.com/costa27/" target="_blank">
+  <img src="https://avatars.githubusercontent.com/u/19155273?s=400&u=a68489b42c03f3e4b9507a055841365f12a1ff12&v=4" width="70" align="left">
+</a>
+
+**Juan Camilo Sandoval Devia**
+
+[![Linkedin](https://img.shields.io/badge/-linkedin-grey?logo=linkedin)](https://www.linkedin.com/in/juan-camilo-sandoval-devia-a33955a5/)
+
+## License
+
+```license
+Copyright 2021 Juan Camilo Sandoval
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
 
