@@ -22,6 +22,9 @@ class GetEmployeeListViewModel @Inject constructor(
     private val _employeeListModel = MutableLiveData<GetEmployeeListView>()
     val employeeListModel: LiveData<GetEmployeeListView> get() = _employeeListModel
 
+    private val _listEmployees = MutableLiveData<List<DData>>()
+    val listEmployees: LiveData<List<DData>> get() = _listEmployees
+
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> get() = _errorMessage
 
@@ -41,8 +44,10 @@ class GetEmployeeListViewModel @Inject constructor(
 
     private fun handleSuccess(data: List<DData>) {
         if (data.isNotEmpty()) {
+            val presentation = data.map { it.toPresentation() }
             _employeeListModel.value =
-                GetEmployeeListView(data = data.map { it.toPresentation() })
+                GetEmployeeListView(data = presentation)
+            _listEmployees.value = data
         } else {
             _employeeListModel.value = GetEmployeeListView(isEmpty = true)
         }
